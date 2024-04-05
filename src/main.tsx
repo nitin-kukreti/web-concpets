@@ -17,8 +17,12 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ThemeProvider } from '@mui/material'
+import { theme } from './theme'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({defaultOptions:{queries:{retry() {
+    return false;
+},}}});
 
 // Create a new router instance
 const router = createRouter({ routeTree, context: {queryClient} })
@@ -35,10 +39,12 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-           <RouterProvider router={router} />
-           <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+        <ThemeProvider theme={theme}>
+           <QueryClientProvider client={queryClient}>
+              <RouterProvider router={router} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+         </ThemeProvider>
     </StrictMode>,
   )
 }

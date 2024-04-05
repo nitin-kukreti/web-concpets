@@ -53,7 +53,11 @@ function HerosList(){
        <FormLabel>Alter Ego </FormLabel>
        <TextField value={state.alterEgo} onChange={(e)=>{setState((val)=>({...val,alterEgo:e.target.value}))}}/>
       </FormControl>
-      <Button variant='contained' onClick={registerNewHeroHandel}>save</Button>
+      <Button 
+      variant='contained' 
+      color='nitinPallet'
+      onClick={registerNewHeroHandel}
+      >save</Button>
      </Stack>
      {data?.pages?.map(({data})=>{
        return data.data.map(({alterEgo,hero,id})=>{
