@@ -54,8 +54,8 @@ function HerosList(){
        <TextField value={state.alterEgo} onChange={(e)=>{setState((val)=>({...val,alterEgo:e.target.value}))}}/>
       </FormControl>
       <Button 
-      variant='contained' 
-      color='nitinPallet'
+      variant='rounded'
+      color='warning'
       onClick={registerNewHeroHandel}
       >save</Button>
      </Stack>
