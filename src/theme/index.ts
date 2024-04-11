@@ -1,6 +1,8 @@
 import {  Palette, PaletteColor, createTheme } from "@mui/material";
 import { green, pink } from "@mui/material/colors";
-import '@mui/material/Button';
+// import {} from "@mui/material/styles";
+// import {ButtonPropsSizeOverrides}  from '@mui/material/Button';
+// import {SwitchPropsColorOverrides,SwitchPropsSizeOverrides}  from '@mui/material/Switch';
 
 declare module '@mui/material/styles' {
     interface Palette {
@@ -18,10 +20,29 @@ declare module '@mui/material/styles' {
     }
     interface ButtonPropsVariantOverrides {
         rounded?:true;
-      }
-      interface ButtonStyleOverrides {
-        nitinVariant:true;
-      }
+    }
+    interface ButtonStyleOverrides {
+        nitinVariant?:true;
+    }
+    interface ButtonPropsSizeOverrides {
+      extraLarge?: true;
+    }
+
+  }
+
+  declare module '@mui/material/Fab' {
+    interface FabPropsColorOverrides {
+      nitinPallet?: true;
+    }
+  }
+
+  declare module '@mui/material/Switch' {
+    interface SwitchPropsColorOverrides {
+      nitinPallet?: true;
+    }
+    interface SwitchPropsSizeOverrides{
+      extraLarge?: true;
+    }
   }
 
 export const theme = createTheme({
@@ -31,6 +52,8 @@ export const theme = createTheme({
         },
         nitinPallet: {
             main: pink[800],
+            dark: pink[900],
+            light: pink[300],
             contrastText: '#ffffff'
         },
      },
@@ -50,6 +73,19 @@ export const theme = createTheme({
               })},
 
             },
+            variants: [
+              {
+                props: {variant: 'rounded',color:'nitinPallet',size: 'small'},
+                style: {
+                 width: '200px',
+                 height: '200px',
+                }
+              }
+            ]
+
+        },
+        MuiFab: {
+          
         }
      }
   });

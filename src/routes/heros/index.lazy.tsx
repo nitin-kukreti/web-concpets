@@ -53,9 +53,10 @@ function HerosList(){
        <FormLabel>Alter Ego </FormLabel>
        <TextField value={state.alterEgo} onChange={(e)=>{setState((val)=>({...val,alterEgo:e.target.value}))}}/>
       </FormControl>
-      <Button 
+      <Button
       variant='rounded'
-      color='warning'
+      sx={{color: (theme)=>theme.palette.primary.dark}}
+      size='extraLarge'
       onClick={registerNewHeroHandel}
       >save</Button>
      </Stack>
